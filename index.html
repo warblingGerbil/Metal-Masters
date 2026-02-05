@@ -34,11 +34,14 @@
 
     function loop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
       drawMap(ctx, 32);
-
+      updatePlayer();
+      drawPlayer(ctx);
+    
       requestAnimationFrame(loop);
     }
+
 
     loop();
   </script>
