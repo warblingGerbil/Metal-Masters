@@ -20,8 +20,8 @@ window.addEventListener("keyup", e => {
 });
 
 export const player = {
-  x: 100,
-  y: 100,
+  x: 0,
+  y: 0,
   speed: 2
 };
 
