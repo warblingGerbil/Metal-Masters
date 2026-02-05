@@ -25,25 +25,29 @@
   <canvas id="game" width="640" height="360"></canvas>
 
   <script type="module">
-    import { drawMap } from './map.js';
-    import { updatePlayer, drawPlayer } from './player.js';
+  import { drawMap } from './map.js';
+  import { updatePlayer, drawPlayer, player } from './player.js';
 
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
 
-    const canvas = document.getElementById("game");
-    const ctx = canvas.getContext("2d");
+  const camera = { x: 0, y: 0 };
 
-    function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-      drawMap(ctx, 32);
-      updatePlayer();
-      drawPlayer(ctx);
-    
-      requestAnimationFrame(loop);
-    }
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    updatePlayer();
 
-    loop();
-  </script>
+    camera.x = player.x - canvas.width / 2;
+    camera.y = player.y - canvas.height / 2;
+
+    drawMap(ctx, camera, 32);
+    drawPlayer(ctx, camera);
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+</script>
 </body>
 </html>
