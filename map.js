@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tile RPG Test</title>
-  <style>
-    body {
-      margin: 0;
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+export const mapData = [
+  [1, 1, 1, 1, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 2, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1]
+];
+
+export function drawMap(ctx, tileSize = 32) {
+  for (let y = 0; y < mapData.length; y++) {
+    for (let x = 0; x < mapData[y].length; x++) {
+      const tile = mapData[y][x];
+
+      ctx.fillStyle =
+        tile === 1 ? "#555" :
+        tile === 2 ? "#a33" :
+        "#222";
+
+      ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
     }
-
-    canvas {
-      background: #222;
-      image-rendering: pixelated;
-    }
-  </style>
-</head>
-
-<body>
-  <canvas id="game" width="640" height="360"></canvas>
-
-  <script type="module">
-    ...
-  </script>
-</body>
-</html>
+  }
+}
