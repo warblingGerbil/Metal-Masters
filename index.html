@@ -25,39 +25,15 @@
   <canvas id="game" width="640" height="360"></canvas>
 
   <script type="module">
+    import { drawMap } from './map.js';
+
     const canvas = document.getElementById("game");
     const ctx = canvas.getContext("2d");
-
-    // Example of how imports will look later:
-    //
-    // import { updatePlayer, drawPlayer } from './src/player.js';
-    // import { loadMap } from './src/map.js';
-    //
-    // updatePlayer();
-    // drawPlayer(ctx);
-    <script type="module">
-      import { drawMap } from './map.js';
-
-      const canvas = document.getElementById("game");
-      const ctx = canvas.getContext("2d");
-
-      function loop() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        drawMap(ctx, 32);
-
-        requestAnimationFrame(loop);
-      }
-
-      loop();
-    </script>
 
     function loop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // draw test background
-      ctx.fillStyle = "#444";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawMap(ctx, 32);
 
       requestAnimationFrame(loop);
     }
