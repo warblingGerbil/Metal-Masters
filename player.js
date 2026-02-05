@@ -32,7 +32,12 @@ export function updatePlayer() {
   if (keys.right) player.x += player.speed;
 }
 
-export function drawPlayer(ctx) {
+export function drawPlayer(ctx, camera) {
   ctx.fillStyle = "#0f0";
-  ctx.fillRect(player.x, player.y, 20, 20);
+  ctx.fillRect(
+    player.x - camera.x,
+    player.y - camera.y,
+    20,
+    20
+  );
 }
